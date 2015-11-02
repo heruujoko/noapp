@@ -25,4 +25,11 @@ Route::group(array('prefix' => 'home' , 'before' => 'auth') , function(){
 
 Route::group(array('prefix' => 'oss' , 'before' => 'auth') , function(){
 	Route::get('/' , 'OssController@data');
+	Route::post('/bantek/submit' , 'OssController@submit_bantek');
+	Route::post('/material/submit' , 'OssController@submit_material');
+});
+
+Route::get('/json' , function(){
+	$data = User::all();
+	return Response::json($data);
 });
