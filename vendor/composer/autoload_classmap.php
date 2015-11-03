@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ApprovalPerson' => $baseDir . '/app/models/ApprovalPerson.php',
+    'ApprovalTableSeeder' => $baseDir . '/app/database/seeds/ApprovalTableSeeder.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
     'Boris\\CLIOptionsHandler' => $vendorDir . '/d11wtq/boris/lib/Boris/CLIOptionsHandler.php',
@@ -34,6 +36,7 @@ return array(
     'CreateFplTable' => $baseDir . '/app/database/migrations/2015_11_01_064214_create_fpl_table.php',
     'CreateListWoTable' => $baseDir . '/app/database/migrations/2015_11_01_065009_create_list_wo_table.php',
     'CreateMastertpTable' => $baseDir . '/app/database/migrations/2015_11_01_065250_create_mastertp_table.php',
+    'CreateMitraOssTable' => $baseDir . '/app/database/migrations/2015_11_02_150136_create_mitra_oss_table.php',
     'CreateNoOssTable' => $baseDir . '/app/database/migrations/2015_11_01_065501_create_no_oss_table.php',
     'CreateOssShopTable' => $baseDir . '/app/database/migrations/2015_11_01_070540_create_oss_shop_table.php',
     'CreateOssTable' => $baseDir . '/app/database/migrations/2015_11_01_065716_create_oss_table.php',
@@ -528,6 +531,7 @@ return array(
     'Net_SSH1' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Net/SSH1.php',
     'Net_SSH2' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Net/SSH2.php',
     'Normalizer' => $vendorDir . '/patchwork/utf8/src/Normalizer.php',
+    'Oss' => $baseDir . '/app/models/Oss.php',
     'OssController' => $baseDir . '/app/controllers/OssController.php',
     'PHPParser_Autoloader' => $vendorDir . '/nikic/php-parser/lib/PHPParser/Autoloader.php',
     'PHPParser_Builder' => $vendorDir . '/nikic/php-parser/lib/PHPParser/Builder.php',

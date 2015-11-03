@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Network Operation Web App</title>
+    <title>Network Operation App</title>
 
     <link href="{{ URL::to('/') }}/themes/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ URL::to('/') }}/themes/font-awesome/css/font-awesome.css" rel="stylesheet">

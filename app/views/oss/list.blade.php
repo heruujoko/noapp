@@ -67,14 +67,14 @@
                                             @foreach($dataoss as $doss)
                                                 <tr>
                                                     <td>{{ $doss->id }}</td>
-                                                    <td>{{ $doss->tanggal_oss }}</td>
+                                                    <td class="time">{{ $doss->tanggal_oss }}</td>
                                                     <td>{{ $doss->no_oss }}</td>
                                                     <td>{{ $doss->nama_bantek_oss }}</td>
                                                     <td>{{ $doss->nama_site }}</td>
                                                     <td>{{ $doss->tanggal_mulai_oss }}</td>
                                                     <td>{{ $doss->tanggal_selesai_oss }}</td>
                                                     <td>{{ $doss->action_oss }}</td>
-                                                    <td>{{ $doss->harga_oss }}</td>
+                                                    <td class="price">{{ $doss->harga_oss }}</td>
                                                     <td>
                                                         <div class="btn-group">
                                                           <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,7 +186,7 @@
                                                 <div class="col-md-8">
                                                     <select class="form-control" name="request">
                                                         @foreach($approvals as $appr)
-                                                            <option value="{{ $appr }}">{{ $appr->name }}</option>
+                                                            <option value="{{ $appr->name }}">{{ $appr->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -196,7 +196,7 @@
                                                 <div class="col-md-8">
                                                     <select class="form-control" name="approval" required>
                                                         @foreach($approvals as $appr)
-                                                            <option value="{{ $appr }}">{{ $appr->name }}</option>
+                                                            <option value="{{ $appr->name }}">{{ $appr->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -265,7 +265,7 @@
                                             <div class="col-md-8">
                                                 <select class="form-control" name="request" required>
                                                     @foreach($approvals as $appr)
-                                                        <option value="{{ $appr }}">{{ $appr->name }}</option>
+                                                        <option value="{{ $appr->name }}">{{ $appr->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -275,7 +275,7 @@
                                             <div class="col-md-8">
                                                 <select class="form-control" name="approval">
                                                     @foreach($approvals as $appr)
-                                                        <option value="{{ $appr }}">{{ $appr->name }}</option>
+                                                        <option value="{{ $appr->name }}">{{ $appr->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -297,7 +297,19 @@
 
 @section('js')
     <script src="{{ URL::to('/') }}/datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ URL::to('/') }}/bower_components/numeral/numeral.js"></script>
+    <script type="text/javascript" src="{{ URL::to('/') }}/bower_components/moment/moment.js"></script>
     <script>
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            toggleActive: true
+        });
+        $('.price').each(function(){
+            var Pformat = numeral($(this).text()).format('0,0');
+            $(this).text('Rp '+Pformat);
+        });
+        $('.time').each(function(){
+          var Tformat = moment($(this).text()).format('LL');
+          $(this).text(Tformat);
+      });
     </script>
 @stop

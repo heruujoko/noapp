@@ -22,7 +22,7 @@ class CreateFplTable extends Migration {
 			$table->text('alasan_kebutuhan');
 			$table->text('spesifikasi_barang')->nullable();
 			$table->integer('jumlah_estimasi_harga');
-			$table->text('waktu_pengadaan');
+			$table->date('waktu_pengadaan');
 			$table->text('trx_id')->nullable();
 			$table->text('no_acc')->nullable();
 			$table->integer('sisa_waktu')->nullable();

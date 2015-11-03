@@ -31,7 +31,7 @@
                     {{ Session::get('info') }}
                 </div>
             @endif
-            <h3>Welcome to NO</h3>
+            <h3>Welcome to Network Operational App</h3>
             <p>Login in. To see it in action.</p>
             <form method="post" class="m-t" role="form" action="{{ URL::to('/auth') }}">
                 <div class="form-group">

@@ -27,9 +27,21 @@ Route::group(array('prefix' => 'oss' , 'before' => 'auth') , function(){
 	Route::get('/' , 'OssController@data');
 	Route::post('/bantek/submit' , 'OssController@submit_bantek');
 	Route::post('/material/submit' , 'OssController@submit_material');
+	Route::get('/{id}/edit' , 'OssController@edit');
+	Route::post('/{id}/update' , 'OssController@update');
+	Route::get('/{id}/delete' , 'OssController@delete');
+});
+
+Route::group(array('prefix' => 'fpl' , 'before' => 'auth') , function(){
+	Route::get('/' , 'FplController@data');
+	Route::post('/submit' , 'FplController@submit');
+	Route::get('/{id}' , 'FplController@details');
+	Route::get('/{id}/edit' , 'FplController@edit');
+	Route::post('/{id}/update' , 'FplController@update');
+	Route::get('/{id}/delete' , 'FplController@delete');
 });
 
 Route::get('/json' , function(){
-	$data = User::all();
+	$data = Fpl::all();
 	return Response::json($data);
 });
