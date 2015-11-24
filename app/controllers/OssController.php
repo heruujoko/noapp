@@ -5,8 +5,9 @@
         public function data(){
             $active = "oss";
             $approvals = ApprovalPerson::all();
-
+            $sl_data = ShoppingList::all(); 
             $dataoss = Oss::all();				
+            $sites = Mastertp::distinct()->groupBy('sitelocation')->get();
             $max = 1;
 			$nomax = DB::table ('oss')
 						-> orderBy ('no_oss', 'desc')
@@ -21,6 +22,8 @@
             ->with('active' ,$active)
             ->with('dataoss', $dataoss)
 			->with('max', $max)
+			->with('sites', $sites)
+			->with('sl_data' , $sl_data)
             ->with('approvals' , $approvals);
         }
 

@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ URL::to('/') }}/datepicker/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/bower_components/chosen-bootstrap/chosen.bootstrap.min.css">
     <style>
         .datepicker table tr td.active:hover, .datepicker table tr td.active:hover:hover, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active.disabled:hover:hover, .datepicker table tr td.active:focus, .datepicker table tr td.active:hover:focus, .datepicker table tr td.active.disabled:focus, .datepicker table tr td.active.disabled:hover:focus, .datepicker table tr td.active:active, .datepicker table tr td.active:hover:active, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active.active, .datepicker table tr td.active:hover.active, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled:hover.active, .open .dropdown-toggle.datepicker table tr td.active, .open .dropdown-toggle.datepicker table tr td.active:hover, .open .dropdown-toggle.datepicker table tr td.active.disabled, .open .dropdown-toggle.datepicker table tr td.active.disabled:hover {
             color: #fff;
@@ -110,7 +111,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label">Mitra OSS</label>
                                                 <div class="col-md-8">
-                                                    <select class="form-control" name="mitra_oss" required>
+                                                    <select class="form-control chosen" name="mitra_oss" required>
                                                         <option value="PRIMATAMA-PLW">PRIMATAMA-PLW</option>
                                                         <option value="PRIMATAMA-PSO">PRIMATAMA-PSO</option>
                                                         <option value="PRIMATAMA-LWK">PRIMATAMA-LWK</option>
@@ -122,7 +123,12 @@
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label">Nama Site</label>
                                                 <div class="col-md-8">
-                                                    <input class="form-control" type="text" name="nama_site" required>
+                                                    <!-- <input class="form-control" type="text" name="nama_site" required> -->
+                                                    <select class="form-control chosen" id="nama_site" name="nama_site" required>
+                                                        @foreach($sites as $site)
+                                                            <option siteid="{{ $site->btsnameoss }}" value="{{ $site->sitelocation }}">{{ $site->sitelocation }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -154,7 +160,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-2">ID Site</label>
                                                 <div class="col-md-8">
-                                                    <input class="form-control" name="id_site" required>
+                                                    <input class="form-control" value="{{ $sites[0]->btsnameoss }}" name="id_site" id="id_site_1" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -166,7 +172,13 @@
                                             <div class="form-group">
                                                 <label class="col-md-2">Kode Shopping List</label>
                                                 <div class="col-md-8">
-                                                    <input class="form-control" name="shopping_list" required>
+                                                    <!-- <input class="form-control" name="shopping_list" required> -->
+                                                    <select class="form-control chosen-ajax" id="sl-list" name="shopping_list" required>
+                                                        <option></option>
+                                                        <!-- @foreach($sl_data as $sl)
+                                                            <option value="{{ $sl->kode_sl }}">{{ $sl->kode_sl }}</option>
+                                                        @endforeach -->
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -184,7 +196,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-2">Request Oleh</label>
                                                 <div class="col-md-8">
-                                                    <select class="form-control" name="request">
+                                                    <select class="form-control chosen" name="request">
                                                         @foreach($approvals as $appr)
                                                             <option value="{{ $appr->name }}">{{ $appr->name }}</option>
                                                         @endforeach
@@ -194,7 +206,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-2">Diketahui Oleh</label>
                                                 <div class="col-md-8">
-                                                    <select class="form-control" name="approval" required>
+                                                    <select class="form-control chosen" name="approval" required>
                                                         @foreach($approvals as $appr)
                                                             <option value="{{ $appr->name }}">{{ $appr->name }}</option>
                                                         @endforeach
@@ -237,13 +249,18 @@
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">Nama Site</label>
                                             <div class="col-md-8">
-                                                <input class="form-control" type="text" name="nama_site" required>
+                                                <!-- <input class="form-control" type="text" name="nama_site" required> -->
+                                                <select class="form-control chosen" id="nama_site_2" name="nama_site" required>
+                                                        @foreach($sites as $site)
+                                                            <option siteid="{{ $site->btsnameoss }}" value="{{ $site->sitelocation }}">{{ $site->sitelocation }}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">ID Site</label>
                                             <div class="col-md-8">
-                                                <input class="form-control" type="text" name="id_site" required>
+                                                <input class="form-control" type="text" value="{{ $sites[0]->btsnameoss }}" name="id_site" id="id_site_2" required>
                                             </div>
                                         </div>
                                     </div>
@@ -297,6 +314,7 @@
 
 @section('js')
     <script src="{{ URL::to('/') }}/datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ URL::to('/') }}/chosen/chosen.jquery.js"></script>
     <script src="{{ URL::to('/') }}/bower_components/numeral/numeral.js"></script>
     <script type="text/javascript" src="{{ URL::to('/') }}/bower_components/moment/moment.js"></script>
     <script>
@@ -310,6 +328,72 @@
         $('.time').each(function(){
           var Tformat = moment($(this).text()).format('LL');
           $(this).text(Tformat);
-      });
+        });
+
+        $('.chosen-ajax').chosen({
+            width: "100%",
+            no_results_ajax : function(param){
+                $.ajax({
+                    url: "{{ URL::to('/ajax/sl/') }}/"+param,
+                    type:'GET',
+                    dataType: 'json',
+                    success: function(output_string){
+                        if(output_string != ""){
+                            $('#sl-list').html(output_string);
+                            $("#sl-list").trigger("chosen:updated");    
+                        }            
+                    },
+                    error : function(){
+                        // console.log('error');
+                        $('.result').hide();        
+                    } // End of success function of ajax form
+                }); // End of ajax call     
+            }
+        });
+
+        $('.chosen').chosen({
+            width: "100%",
+        });
+
+        // $("#sl_list_chosen").bind('keyup',function(e) {
+        //     console.log(e.target.value.length);
+        //     if(e.target.value.length <= 2){
+
+        //     } else {
+        //         var param = e.target.value;
+        //         $.ajax({
+        //             url: "{{ URL::to('/ajax/sl/') }}/"+param,
+        //             type:'GET',
+        //             dataType: 'json',
+        //             success: function(output_string){
+        //                 if(output_string != ""){
+        //                     $('#sl-list').html(output_string);
+        //                     $("#sl-list").trigger("chosen:updated");    
+        //                 }            
+        //             },
+        //             error : function(){
+        //                 // console.log('error');
+        //                 $('.result').hide();        
+        //             } // End of success function of ajax form
+        //         }); // End of ajax call     
+        //     }
+            
+        // });
+
+        $('#sl_list').on('chosen:hiding_dropdwn' , function(){
+            alert('hello');
+        });
+
+        $('div.chosen-search').find('input').change(function(){
+            console.log('c');
+        })
+
+        $('#nama_site').change(function(){
+            $('#id_site_1').val($('option:selected', this).attr('siteid'));
+        })
+
+        $('#nama_site_2').change(function(){
+            $('#id_site_2').val($('option:selected', this).attr('siteid'));
+        })
     </script>
 @stop
